@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amor Saúde — Painel do Agente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<aside class="sb">
+  <div class="sb-top">
+    <div class="sb-icon"><i class="ti ti-activity-heartbeat"></i></div>
+    <div>
+      <div class="sb-name">Amor Saúde</div>
+      <div class="sb-sub">Painel do Agente</div>
+    </div>
+  </div>
+
+  <nav class="sb-nav">
+    <div class="sb-label">Módulos</div>
+    <button class="nb on" id="nav-agenda"     onclick="setTab('agenda')">
+      <i class="ti ti-calendar-week"></i> Agenda do Dia
+      <span class="nb-badge" id="badge-agenda">—</span>
+    </button>
+    <button class="nb" id="nav-exames"        onclick="setTab('exames')">
+      <i class="ti ti-clipboard-list"></i> Exames
+      <span class="nb-badge">17</span>
+    </button>
+    <button class="nb" id="nav-orcamento"     onclick="setTab('orcamento')">
+      <i class="ti ti-receipt"></i> Orçamento
+    </button>
+    <button class="nb" id="nav-doutores"      onclick="setTab('doutores')">
+      <i class="ti ti-users"></i> Doutores
+      <span class="nb-badge" id="badge-doc">—</span>
+    </button>
+    <button class="nb" id="nav-convenios"     onclick="setTab('convenios')">
+      <i class="ti ti-id-badge-2"></i> Convênios
+      <span class="nb-badge">2</span>
+    </button>
+    <button class="nb" id="nav-avisos"        onclick="setTab('avisos')">
+      <i class="ti ti-alert-circle"></i> Avisos
+      <span class="nb-badge">5</span>
+    </button>
+    <button class="nb" id="nav-links"         onclick="setTab('links')">
+      <i class="ti ti-link"></i> Links Rápidos
+    </button>
+  </nav>
+
+  <div class="sb-foot">
+    <a href="https://amorsaudesp2.intelite.com.br/panel-dev/attendance" target="_blank" class="ai-btn">
+      <i class="ti ti-device-desktop"></i>
+      <div>
+        <div>Sistema AI</div>
+        <div class="ai-btn-sub">Intelite · Senhas</div>
+      </div>
+      <i class="ti ti-external-link ai-ext"></i>
+    </a>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div>
+      <div class="tl-label" id="topbar-date">carregando...</div>
+      <div class="tl-title" id="topbar-page">Agenda do Dia</div>
+    </div>
+    <div class="tr">
+      <div class="ppill pm" id="ppill"><i class="ti ti-sun"></i>&nbsp;Manhã</div>
+      <div class="clock" id="clock">00:00:00</div>
+    </div>
+  </div>
+  <div class="ct anim" id="content"></div>
+</main>
+
+<!-- ═══ DADOS + CAMADA DB ═══════════════════════════════ -->
+<script src="js/data.js"></script>   <!-- dados estáticos (futuro: Google Sheets) -->
+<script src="js/db.js"></script>     <!-- métodos de acesso (trocar aqui p/ Sheets) -->
+
+<!-- ═══ INFRAESTRUTURA ══════════════════════════════════ -->
+<script src="js/state.js"></script>  <!-- estado global -->
+<script src="js/utils.js"></script>  <!-- pad(), fmtPrice() -->
+
+<!-- ═══ VIEWS ════════════════════════════════════════════ -->
+<script src="js/views/agenda.js"></script>
+<script src="js/views/exames.js"></script>
+<script src="js/views/orcamento.js"></script>
+<script src="js/views/doutores.js"></script>
+<script src="js/views/convenios.js"></script>
+<script src="js/views/avisos.js"></script>
+<script src="js/views/links.js"></script>
+
+<!-- ═══ CORE ═════════════════════════════════════════════ -->
+<script src="js/clock.js"></script>  <!-- relógio (depende de DB + utils) -->
+<script src="js/nav.js"></script>    <!-- navegação entre abas -->
+<script src="js/app.js"></script>    <!-- renderContent() + init -->
+
+</body>
+</html>
